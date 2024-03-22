@@ -5,25 +5,65 @@ using UnityEngine;
 public class OpenGarageDoors : MonoBehaviour
 {
 
-    private float doorSpeed = 0.00001f;
-    private float doorOpenHeight = 5f;
+    private float doorSpeed = 1f;
+    private float doorOpenHeight = 3.57f;
+
+    private bool isOpening = false;
+    private bool isReady = false;
+
+    public float timeToOpenDoor;
+
+    public AudioSource audioSource;
+    //private float soundStartTimestamp = 81;
     // Start is called before the first frame update
     void Start()
     {
-        while(transform.position.y < doorOpenHeight) {
-            Invoke("OpenDoors", 0.1f);
-        }
+        Invoke("doorIsReady", timeToOpenDoor);
     }
 
-    private void OpenDoors() {
-        transform.position = new Vector3(transform.position.x, transform.position.y + doorSpeed * Time.deltaTime, transform.position.z);
+    void doorIsReady() {
+        isReady = true;
     }
+
+    IEnumerator OpenDoorCoroutine() {
+        // Calcule la hauteur actuelle de la porte de garage
+        float initialHeight = transform.position.y;
+        float targetHeight = initialHeight + doorOpenHeight;
+
+        PlaySound();
+        // Ouvre progressivement la porte de garage jusqu'à la hauteur désirée
+        while (transform.position.y < targetHeight) {
+            float newY = Mathf.MoveTowards(transform.position.y, targetHeight, doorSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            yield return null; // Attend la prochaine frame pour continuer l'instruction
+        }
+
+        StopSound();
+
+        isOpening = false; // Marque que l'ouverture de la porte est terminée
+        isReady = false;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        /*while(transform.position.y < doorOpenHeight) {
-            transform.position = new Vector3(transform.position.x, transform.position.y + doorSpeed * Time.deltaTime, transform.position.z);
-        }*/
+        if (!isOpening && isReady) {
+            isOpening = true; // Marque que la porte est en train de s'ouvrir
+            StartCoroutine(OpenDoorCoroutine()); // Démarre la coroutine pour ouvrir progressivement la porte
+        }
     }
+
+    void PlaySound() {
+        if (audioSource != null) {
+            audioSource.Play(); // Commencez à jouer le son
+        }
+    }
+
+    void StopSound() {
+        if (audioSource != null && audioSource.isPlaying) {
+            audioSource.Stop(); // Arrêtez de jouer le son si c'est en cours de lecture
+        }
+    }
+
 }
