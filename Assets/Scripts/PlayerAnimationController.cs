@@ -14,18 +14,13 @@ public class PlayerAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)) {
             animator.SetInteger("state", 2);
-        }
-        else if(Input.GetKey(KeyCode.W)) {
+        } else if (Input.GetKey(KeyCode.W)) {
             animator.SetInteger("state", 1);
-        }
-        else if(Input.GetKey(KeyCode.D)) {
-            animator.SetInteger("state", 3);
-        }
-        else {
+        } else {
             animator.SetInteger("state", 0);
         }
-        Debug.Log(animator.GetInteger("state"));
+        //Debug.Log(animator.GetInteger("state"));
     }
 }

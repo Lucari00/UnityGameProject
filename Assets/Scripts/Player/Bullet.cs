@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCamera : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-
-    public Transform cameraPosition;
+    public float speed = 10f;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = cameraPosition.position;
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 }
