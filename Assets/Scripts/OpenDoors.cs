@@ -16,7 +16,6 @@ public class OpenDoors : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         // Vérifie si le joueur est entré dans la zone de détection de la porte
         if (other.CompareTag("Player")) {
-            Debug.Log("open");
             rightDoor.Play("RightDoorOpen", 0, 0.0f);
             leftDoor.Play("LeftDoorOpen", 0, 0.0f);
             gameObject.SetActive(false);

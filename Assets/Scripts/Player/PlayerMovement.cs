@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed;
+    public float maxSpeed;
 
     public float groundDrag;
 
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode shiftKey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -44,8 +46,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(jumpKey) && isGrounded && readyToJump) {
             readyToJump = false;
+            maxSpeed = moveSpeed;
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
+        } else if (Input.GetKey(shiftKey) && isGrounded) {
+            maxSpeed = moveSpeed + 3; 
+        } else {
+            maxSpeed = moveSpeed;
         }
     }
 
@@ -53,9 +60,9 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (isGrounded) {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * maxSpeed * 10f, ForceMode.Force);
         } else if (!isGrounded) {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * maxSpeed * 10f * airMultiplier, ForceMode.Force);
         }
     }
 
@@ -82,8 +89,8 @@ public class PlayerMovement : MonoBehaviour
     private void SpeedControl() {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
-        if (flatVel.magnitude > moveSpeed) {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+        if (flatVel.magnitude > maxSpeed) {
+            Vector3 limitedVel = flatVel.normalized * maxSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
