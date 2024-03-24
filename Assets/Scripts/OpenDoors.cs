@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpenDoors : MonoBehaviour
 {
-    public Animator rightDoor = null;
-    //public Animator leftDoor = null;
+    public Animator rightDoor;
+    public Animator leftDoor;
 
     void Start() {
     }
@@ -15,10 +15,10 @@ public class OpenDoors : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         // Vérifie si le joueur est entré dans la zone de détection de la porte
-        if (other.CompareTag("PlayerC")) {
+        if (other.CompareTag("Player")) {
             Debug.Log("open");
-            rightDoor.Play("DoorOpenRight", 0, 0.0f);
-            rightDoor.Play("DoorOpenLeft", 0, 0.0f);
+            rightDoor.Play("RightDoorOpen", 0, 0.0f);
+            leftDoor.Play("LeftDoorOpen", 0, 0.0f);
             gameObject.SetActive(false);
         }
     }
