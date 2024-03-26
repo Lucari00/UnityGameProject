@@ -40,6 +40,15 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
 
+    public float GetPlayerSpeed() {
+        if(isGrounded) {
+            return rb.velocity.magnitude;
+        }
+        else {
+            return -1.0f;
+        }
+    }
+
     private void GetInput() {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
