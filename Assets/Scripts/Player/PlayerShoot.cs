@@ -13,6 +13,7 @@ public class PlayerShoot : MonoBehaviour
     public float shootCooldown;
     private bool readyToShoot;
     private bool hasGun;
+    public Camera cameraJoueur;
 
     public Transform orientation;
 
@@ -34,11 +35,18 @@ public class PlayerShoot : MonoBehaviour
     }
 
     private void Shoot() {
-        Vector3 shootDirection = orientation.forward; // Get the forward direction of the orientation
-        Quaternion rotation = Quaternion.LookRotation(shootDirection);
-        rotation.eulerAngles = new Vector3(90f, rotation.eulerAngles.y, rotation.eulerAngles.z); // Force X axis to 90 degrees
-        Instantiate(bulletObject, gun.transform.position, rotation);
-        Instantiate(fxSmoke, gun.transform.position + new Vector3(0f, 0.05f, 0f), rotation);
+        //Vector3 shootDirection = orientation.forward; // Get the forward direction of the orientation
+        //Quaternion rotation = Quaternion.LookRotation(shootDirection);
+        //rotation.eulerAngles = new Vector3(90f, rotation.eulerAngles.y, rotation.eulerAngles.z); // Force X axis to 90 degrees
+
+        Vector3 positionCamera = transform.position;
+        Vector3 positionGun = gun.transform.position;
+        Vector3 vecteurMilieuVue = positionCamera + gun.transform.forward * Vector3.Distance(positionCamera, positionGun) / 2;
+        Quaternion rotationObjetVersMilieuVue = Quaternion.LookRotation(vecteurMilieuVue - positionGun);
+
+
+        Instantiate(bulletObject, gun.transform.position, rotationObjetVersMilieuVue);
+        Instantiate(fxSmoke, gun.transform.position + new Vector3(0f, 0.05f, 0f), rotationObjetVersMilieuVue);
         PlaySound();
     }
 
