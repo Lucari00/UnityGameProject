@@ -19,7 +19,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         float moveSpeed = playerMovement.GetPlayerSpeed();
         animator.SetFloat("speed", moveSpeed);
-        Debug.Log("MS" + moveSpeed);
-        Debug.Log("speed" + animator.GetFloat("speed"));
+        //Debug.Log("MS" + moveSpeed);
+        //Debug.Log("speed" + animator.GetFloat("speed"));
     }
 }

@@ -6,12 +6,7 @@ public class OpenDoors : MonoBehaviour
 {
     public Animator rightDoor;
     public Animator leftDoor;
-
-    void Start() {
-    }
-
-    void Update() {
-    }
+    public GameObject otherTrigger;
 
     void OnTriggerEnter(Collider other) {
         // Vérifie si le joueur est entré dans la zone de détection de la porte
@@ -19,13 +14,8 @@ public class OpenDoors : MonoBehaviour
             rightDoor.Play("RightDoorOpen", 0, 0.0f);
             leftDoor.Play("LeftDoorOpen", 0, 0.0f);
             gameObject.SetActive(false);
+            otherTrigger.SetActive(false);
         }
     }
 
-    /*void OnTriggerExit(Collider other) {
-        // Vérifie si le joueur est sorti de la zone de détection de la porte
-        if (other.CompareTag("Player")) {
-            playerInRange = false;
-        }
-    }*/
 }
