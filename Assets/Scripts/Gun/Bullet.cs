@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
             GameObject guardObject = other.transform.parent.parent.gameObject;
             Enemy enemyScript = guardObject.GetComponent<Enemy>();
             if (enemyScript != null) {
-                enemyScript.hit();
+                enemyScript.Hit();
             }
         } else {
             Instantiate(fxSmoke, transform);

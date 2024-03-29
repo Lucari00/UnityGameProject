@@ -752,10 +752,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2c3a0917-0116-4dd6-9d7a-e1015663ad5c
+  cloudProjectId: 513f9b8d-2449-466f-a029-08273e73f85b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: PrototypeProject
+  projectName: UnityGameProject
   organizationId: lucari00
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

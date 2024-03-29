@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour {
+public class Shoot : MonoBehaviour {
 
     public GameObject bulletObject;
     public GameObject gun;
@@ -10,7 +10,7 @@ public class PlayerShoot : MonoBehaviour {
     public Transform characterOrientation;
     public float shootCooldown;
     private bool readyToShoot;
-    private bool hasGun;
+    public bool hasGun;
     public bool isPlayer;
 
     public Transform orientation;
@@ -27,7 +27,7 @@ public class PlayerShoot : MonoBehaviour {
     private void getInput() {
         if (Input.GetKey(shootKey) && readyToShoot && hasGun) {
             readyToShoot = false;
-            Shoot();
+            Fire();
             Invoke("ResetShoot", shootCooldown);
         }
     }
@@ -36,7 +36,7 @@ public class PlayerShoot : MonoBehaviour {
         readyToShoot = true;
     }
 
-    private void Shoot() {
+    private void Fire() {
         Quaternion rotation = Quaternion.Euler(-8f, characterOrientation.localRotation.eulerAngles.y - 0.2f, characterOrientation.localRotation.eulerAngles.z + 90);
         Instantiate(bulletObject, gun.transform.position, rotation);
         Instantiate(fxSmoke, gun.transform.position + new Vector3(0f, 0.05f, 0f), rotation);

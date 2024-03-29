@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private bool isHit = false;
+    public bool isHit = false;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         
     }
@@ -15,11 +15,10 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void hit() {
-        Debug.Log("ici");
+    public void Hit() {
         if (!isHit) {
             // faire anim de kill
-            Invoke("supprEnemy", 3f);
+            Invoke("supprEnemy", 15f);
         }
         isHit = true;
     }

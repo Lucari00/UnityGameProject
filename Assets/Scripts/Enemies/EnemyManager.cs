@@ -7,12 +7,13 @@ public class EnemyManager : MonoBehaviour
 {
     
     public GameObject enemy;
-    public Vector3 spawnPoint;
 
-    void Start()
-    {
-        for(int i = 0; i < 3; i++) {
-            Instantiate(enemy, spawnPoint + new Vector3(0, 0, i * 2.0f), Quaternion.Euler(0, 90f, 0));
+    public List<GameObject> SpawnGuards(int n, Vector3 spawnPoint, Vector3 distanceInBetween, Quaternion rotation) {
+        List<GameObject> enemies = new List<GameObject>();
+        for (int i = 0; i < n; i++) {
+            GameObject enemyObject = Instantiate(enemy, spawnPoint + i * distanceInBetween, rotation);
+            enemies.Add(enemyObject);
         }
+        return enemies;
     }
 }

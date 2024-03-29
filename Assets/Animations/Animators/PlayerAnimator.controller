@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FPV_Running
+  m_Name: Player_Running
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f726530a1c2f5df4784649179037f2f7, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8f8945527952458429d08ebb3c932c4c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -148,7 +148,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -194,7 +194,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FPV_Walking
+  m_Name: Player_Walking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -209,7 +209,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6eec3566f62343249b228f3b83449c07, type: 2}
+  m_Motion: {fileID: 7400000, guid: 83d2e311e2e6d8844b25bd135dfa43f6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -275,7 +275,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FPV_NoAnim
+  m_Name: Player_NoAnim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -290,7 +290,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 811fe0124e6e66e4f913ecc5251a01a6, type: 2}
+  m_Motion: {fileID: 7400000, guid: c976f7e2b1acb274db3fc949f70cdfb7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
