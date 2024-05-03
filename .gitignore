@@ -16,6 +16,8 @@
 /Assets/PolygonGangWarfare.meta
 /Assets/PolygonHeist.meta
 /Assets/PolygonStreetRacer.meta
+/Assets/Fantasy Skybox Free/
+/Assets/Fantasy Skybox Free.meta
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -32,6 +34,8 @@
 
 # Visual Studio cache directory
 .vs/
+
+*.zip
 
 # Gradle cache directory
 .gradle/
