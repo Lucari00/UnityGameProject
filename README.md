@@ -11,3 +11,5 @@ Pour mettre les ressources dans le jeu :
 - Ouvrir avec Unity le projet
 - Télécharger les ressources sur le [Google Drive](https://drive.google.com/drive/u/2/folders/0ADWht_x9G-gdUk9PVA)
 - Importer les ressources
+
+**Note :** la scène “MainScene” est vide. Les scènes faites sont : **MenuScene** ,**TutoScene** et **HeistScene**
